@@ -56,7 +56,7 @@ const resolvers = {
   },
 
   Mutation: {
-    login: async function(_, { email }, { dataSources }) {
+    login: async (_, { email }, { dataSources }) => {
       const user = await dataSources.userAPI.findOrCreateUser({ email });
       if (user) return Buffer.from(email).toString("base64");
     },
