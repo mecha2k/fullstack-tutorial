@@ -21,22 +21,12 @@ function paginateResults({ after: cursor, pageSize = 20, results, getCursor = ()
 
 function createStore() {
   const Op = Sequelize.Op;
-  const operatorsAliases = {
-    $in: Op.in,
-    $and: Op.and,
-    $or: Op.or,
-    $eq: Op.eq,
-    $gt: Op.gt,
-    $lt: Op.lt,
-    $lte: Op.lte,
-    $like: Op.like,
-  };
 
   const sequelize = new Sequelize("database", "username", "password", {
     dialect: "sqlite",
     storage: "./store.sqlite",
     logging: false,
-    operatorsAliases: operatorsAliases,
+    operatorsAliases: false,
   });
 
   const users = sequelize.define("user", {
