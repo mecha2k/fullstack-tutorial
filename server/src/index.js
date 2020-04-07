@@ -16,7 +16,7 @@ const server = new ApolloServer({
 
   dataSources: () => ({
     launchAPI: new LaunchAPI(),
-    userAPI: new UserAPI({ store })
+    userAPI: new UserAPI({ store }),
   }),
   context: async ({ req }) => {
     // simple auth check on every request
@@ -28,9 +28,9 @@ const server = new ApolloServer({
     const user = (users && users[0]) || null;
 
     return { user: { ...user.dataValues } };
-  }
+  },
 });
 
-server.listen({ port: 3500 }).then(({ url }) => {
+server.listen({ port: 4000 }).then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });
