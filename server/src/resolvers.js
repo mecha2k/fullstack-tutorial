@@ -8,8 +8,9 @@ const resolvers = {
   // },
 
   Query: {
-    launches: async (_, { pageSize = 20, after }, { dataSources }) => {
-      const allLaunches = await dataSources.launchAPI.getAllLaunches();
+    // launches: async (_, { pageSize = 20, after }, { dataSources }) => {
+    launches: async function (parent, { pageSize = 20, after }, context, info) {
+      const allLaunches = await context.dataSources.launchAPI.getAllLaunches();
       // we want these in reverse chronological order
       allLaunches.reverse();
       const launches = paginateResults({
@@ -27,8 +28,13 @@ const resolvers = {
           : false,
       };
     },
-    launch: (_, { id }, { dataSources }) => dataSources.launchAPI.getLaunchById({ launchId: id }),
-    me: async (_, __, { dataSources }) => dataSources.userAPI.findOrCreateUser(),
+    // launch: (_, { id }, { dataSources }) => dataSources.launchAPI.getLaunchById({ launchId: id }),
+    launch: function (parent, args, context, info) {
+      return context.dataSources.launchAPI.getLaunchById({ launchId: args.id });
+    },
+    me: async function (parent, args, context, info) {
+      return context.dataSources.userAPI.findOrCreateUser();
+    },
   },
 
   Mission: {
