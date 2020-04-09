@@ -1,7 +1,6 @@
 const { paginateResults } = require("./utils");
 
 const resolvers = {
-
   Query: {
     // launches: async (_, { pageSize = 20, after }, { dataSources }) => {
     launches: async function (parent, { after, pageSize = 20 }, context, info) {

@@ -53,6 +53,8 @@ function createStore() {
     userId: Sequelize.INTEGER,
   });
 
+  // sequelize.sync();
+
   return { users, trips };
 }
 

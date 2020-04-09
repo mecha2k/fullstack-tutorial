@@ -13,6 +13,9 @@ const store = createStore();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  engine: {
+    apiKey: "service:apollo-space-explorer:mafPbISTWXtYtV1RO2HN3A",
+  },
 
   dataSources: () => ({
     launchAPI: new LaunchAPI(),

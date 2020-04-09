@@ -15,18 +15,21 @@ import injectStyles from "./styles";
 // Set up our apollo-client to point at the server we created
 // this can be local or a remote endpoint
 const cache = new InMemoryCache();
+const link = new HttpLink({ uri: "http://localhost:4000/" });
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache,
-  link: new HttpLink({
-    uri: "http://localhost:3500/graphql",
-    headers: {
-      authorization: localStorage.getItem("token"),
-      "client-name": "Space Explorer [web]",
-      "client-version": "1.0.0",
-    },
-  }),
-  resolvers,
-  typeDefs,
+  link,
+
+  // link: new HttpLink({
+  //   uri: "http://localhost:4000/",
+  //   headers: {
+  //     authorization: localStorage.getItem("token"),
+  //     "client-name": "Space Explorer [web]",
+  //     "client-version": "1.0.0",
+  //   },
+  // }),
+  // resolvers,
+  // typeDefs,
 });
 
 cache.writeData({
@@ -54,6 +57,21 @@ function IsLoggedIn() {
   const { data } = useQuery(IS_LOGGED_IN);
   return data.isLoggedIn ? <Pages /> : <Login />;
 }
+
+// client
+//   .query({
+//     query: gql`
+//       query GetLaunch {
+//         launch(id: 56) {
+//           id
+//           mission {
+//             name
+//           }
+//         }
+//       }
+//     `,
+//   })
+//   .then((result) => console.log(result));
 
 injectStyles();
 ReactDOM.render(
