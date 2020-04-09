@@ -16,9 +16,10 @@ import injectStyles from "./styles";
 // this can be local or a remote endpoint
 const cache = new InMemoryCache();
 const link = new HttpLink({ uri: "http://localhost:4000/" });
+
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-  cache,
-  link,
+  cache: cache,
+  link: link,
 
   // link: new HttpLink({
   //   uri: "http://localhost:4000/",
@@ -74,6 +75,7 @@ function IsLoggedIn() {
 //   .then((result) => console.log(result));
 
 injectStyles();
+
 ReactDOM.render(
   <ApolloProvider client={client}>
     <Pages />

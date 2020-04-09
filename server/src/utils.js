@@ -24,7 +24,7 @@ function createStore() {
 
   const sequelize = new Sequelize("database", "username", "password", {
     dialect: "sqlite",
-    storage: "./store.sqlite",
+    storage: "./db.sqlite",
     logging: false,
     operatorsAliases: false,
   });
@@ -53,7 +53,7 @@ function createStore() {
     userId: Sequelize.INTEGER,
   });
 
-  // sequelize.sync();
+  sequelize.sync();
 
   return { users, trips };
 }
