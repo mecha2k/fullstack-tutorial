@@ -59,20 +59,20 @@ function IsLoggedIn() {
   return data.isLoggedIn ? <Pages /> : <Login />;
 }
 
-// client
-//   .query({
-//     query: gql`
-//       query GetLaunch {
-//         launch(id: 56) {
-//           id
-//           mission {
-//             name
-//           }
-//         }
-//       }
-//     `,
-//   })
-//   .then((result) => console.log(result));
+client
+  .query({
+    query: gql`
+      query GetLaunch {
+        launch(id: 56) {
+          id
+          mission {
+            name
+          }
+        }
+      }
+    `,
+  })
+  .then((result) => console.log(result));
 
 injectStyles();
 
