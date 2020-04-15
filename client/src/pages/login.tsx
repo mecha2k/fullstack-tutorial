@@ -17,9 +17,9 @@ export default function Login() {
   const [login, { loading, error }] = useMutation<LoginTypes.login, LoginTypes.loginVariables>(
     LOGIN_USER,
     {
-      onCompleted({login}) {
+      onCompleted({ login }) {
         localStorage.setItem("token", login as string);
-        client.writeData({data: {isLoggedIn: true}});
+        client.writeData({ data: { isLoggedIn: true } });
       },
     }
   );

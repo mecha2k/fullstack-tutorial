@@ -63,7 +63,7 @@ const Launches: React.FC<LaunchesProps> = () => {
               variables: {
                 after: data.launches.cursor,
               },
-              updateQuery: (prev, {fetchMoreResult, ...rest}) => {
+              updateQuery: (prev, { fetchMoreResult, ...rest }) => {
                 if (!fetchMoreResult) return prev;
                 return {
                   ...fetchMoreResult,

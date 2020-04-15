@@ -58,19 +58,19 @@ function IsLoggedIn() {
 }
 
 client
-.query({
-  query: gql`
+  .query({
+    query: gql`
       query GetLaunch {
-          launch(id: 56) {
-              id
-              mission {
-                  name
-              }
+        launch(id: 56) {
+          id
+          mission {
+            name
           }
+        }
       }
-  `,
-})
-.then((result) => console.log(result));
+    `,
+  })
+  .then((result) => console.log(result));
 
 injectStyles();
 
