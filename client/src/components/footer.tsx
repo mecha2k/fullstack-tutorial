@@ -11,28 +11,24 @@ import { colors, unit } from "../styles";
 export default function Footer() {
   return (
     <Container>
-      {/*<InnerContainer>*/}
-      <MenuItem to="/">
-        <HomeIcon />
-        Home
-      </MenuItem>
-      <MenuItem to="/cart">
-        <CartIcon />
-        Cart
-      </MenuItem>
-      <MenuItem to="/profile">
-        <ProfileIcon />
-        Profile
-      </MenuItem>
-      <LogoutButton />
-      {/*</InnerContainer>*/}
+      <InnerContainer>
+        <MenuItem to="/">
+          <HomeIcon />
+          Home
+        </MenuItem>
+        <MenuItem to="/cart">
+          <CartIcon />
+          Cart
+        </MenuItem>
+        <MenuItem to="/profile">
+          <ProfileIcon />
+          Profile
+        </MenuItem>
+        <LogoutButton />
+      </InnerContainer>
     </Container>
   );
 }
-
-/**
- * STYLED COMPONENTS USED IN THIS FILE ARE BELOW HERE
- */
 
 const Container = styled("footer")({
   flexShrink: 0,
