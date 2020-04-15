@@ -4,7 +4,7 @@ function paginateResults({ after: cursor, pageSize = 20, results, getCursor = ()
   if (pageSize < 1) return [];
 
   if (!cursor) return results.slice(0, pageSize);
-  const cursorIndex = results.findIndex(item => {
+  const cursorIndex = results.findIndex((item) => {
     // if an item has a `cursor` on it, use that, otherwise try to generate one
     let itemCursor = item.cursor ? item.cursor : getCursor(item);
 
@@ -26,31 +26,31 @@ function createStore() {
     dialect: "sqlite",
     storage: "./db.sqlite",
     logging: false,
-    operatorsAliases: false
+    operatorsAliases: false,
   });
 
   const users = sequelize.define("user", {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
     createdAt: Sequelize.DATE,
     updatedAt: Sequelize.DATE,
     email: Sequelize.STRING,
-    token: Sequelize.STRING
+    token: Sequelize.STRING,
   });
 
   const trips = sequelize.define("trip", {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
     createdAt: Sequelize.DATE,
     updatedAt: Sequelize.DATE,
     launchId: Sequelize.INTEGER,
-    userId: Sequelize.INTEGER
+    userId: Sequelize.INTEGER,
   });
 
   sequelize.sync();

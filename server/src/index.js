@@ -14,24 +14,24 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   engine: {
-    apiKey: "service:apollo-space-explorer:mafPbISTWXtYtV1RO2HN3A"
+    apiKey: "service:apollo-space-explorer:mafPbISTWXtYtV1RO2HN3A",
   },
 
   dataSources: () => ({
     launchAPI: new LaunchAPI(),
-    userAPI: new UserAPI({ store })
+    userAPI: new UserAPI({store}),
   }),
-  context: async ({ req }) => {
+  context: async ({req}) => {
     // simple auth check on every request
     const auth = (req.headers && req.headers.authorization) || "";
     const email = Buffer.from(auth, "base64").toString("ascii");
-    if (!isEmail.validate(email)) return { user: null };
+    if (!isEmail.validate(email)) return {user: null};
     // find a user by their email
-    const users = await store.users.findOrCreate({ where: { email } });
+    const users = await store.users.findOrCreate({where: {email}});
     const user = (users && users[0]) || null;
 
-    return { user: { ...user.dataValues } };
-  }
+    return {user: {...user.dataValues}};
+  },
 });
 
 server.listen({ port: 4000 }).then(({ url }) => {

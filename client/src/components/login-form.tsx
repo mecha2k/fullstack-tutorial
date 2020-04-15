@@ -24,7 +24,7 @@ export default class LoginForm extends Component<LoginFormProps, LoginFormState>
 
   onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const email = (event.target as HTMLInputElement).value;
-    this.setState(s => ({ email }));
+    this.setState((s) => ({email}));
   };
 
   onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -41,14 +41,14 @@ export default class LoginForm extends Component<LoginFormProps, LoginFormState>
         </Header>
         <StyledRocket />
         <Heading>Space Explorer</Heading>
-        <StyledForm onSubmit={e => this.onSubmit(e)}>
+        <StyledForm onSubmit={(e) => this.onSubmit(e)}>
           <StyledInput
             required
             type="email"
             name="email"
             placeholder="Email"
             data-testid="login-input"
-            onChange={e => this.onChange(e)}
+            onChange={(e) => this.onChange(e)}
           />
           <Button type="submit">Log in</Button>
         </StyledForm>
@@ -71,40 +71,40 @@ const Container = styled("div")({
   backgroundColor: colors.primary,
   backgroundImage: `url(${space})`,
   backgroundSize: "cover",
-  backgroundPosition: "center"
+  backgroundPosition: "center",
 });
 
 const svgClassName = css({
   display: "block",
-  fill: "currentColor"
+  fill: "currentColor",
 });
 
 const Header = styled("header")(svgClassName, {
   width: "100%",
   marginBottom: unit * 5,
   padding: unit * 2.5,
-  position: "relative"
+  position: "relative",
 });
 
 const StyledLogo = styled(Logo)(size(56), {
   display: "block",
   margin: "0 auto",
-  position: "relative"
+  position: "relative",
 });
 
 const StyledCurve = styled(Curve)(size("100%"), {
   fill: colors.primary,
   position: "absolute",
   top: 0,
-  left: 0
+  left: 0,
 });
 
 const Heading = styled("h1")({
-  margin: `${unit * 3}px 0 ${unit * 6}px`
+  margin: `${unit * 3}px 0 ${unit * 6}px`,
 });
 
 const StyledRocket = styled(Rocket)(svgClassName, {
-  width: 250
+  width: 250,
 });
 
 const StyledForm = styled("form")({
@@ -114,7 +114,7 @@ const StyledForm = styled("form")({
   borderRadius: 3,
   boxShadow: "6px 6px 1px rgba(0, 0, 0, 0.25)",
   color: colors.text,
-  backgroundColor: "white"
+  backgroundColor: "white",
 });
 
 const StyledInput = styled("input")({
@@ -125,6 +125,6 @@ const StyledInput = styled("input")({
   fontSize: 16,
   outline: "none",
   ":focus": {
-    borderColor: colors.primary
-  }
+    borderColor: colors.primary,
+  },
 });

@@ -8,7 +8,7 @@ import { cardClassName, getBackgroundImage } from "./launch-tile";
 const LaunchDetail: React.FC<any> = ({ id, site, rocket }: any) => (
   <Card
     style={{
-      backgroundImage: getBackgroundImage(id as string)
+      backgroundImage: getBackgroundImage(id as string),
     }}
   >
     <h3>
@@ -24,7 +24,7 @@ const LaunchDetail: React.FC<any> = ({ id, site, rocket }: any) => (
 
 const Card = styled("div")(cardClassName, {
   height: 365,
-  marginBottom: unit * 4
+  marginBottom: unit * 4,
 });
 
 export default LaunchDetail;

@@ -30,5 +30,5 @@ const Container = styled("div")({
   maxWidth: 600,
   margin: "0 auto",
   padding: unit * 3,
-  paddingBottom: unit * 5
+  paddingBottom: unit * 5,
 });

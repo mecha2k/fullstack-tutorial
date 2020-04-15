@@ -17,13 +17,13 @@ export const menuItemClassName = css({
     display: "block",
     width: 60,
     margin: `0 auto ${unit}px`,
-    fill: colors.secondary
+    fill: colors.secondary,
   },
-  textDecoration: "none"
+  textDecoration: "none",
 });
 
 const MenuItem = styled(Link)(menuItemClassName, {
-  textDecoration: "none"
+  textDecoration: "none",
 });
 
 export default MenuItem;

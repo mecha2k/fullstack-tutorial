@@ -20,22 +20,22 @@ const link = new HttpLink({
   headers: {
     authorization: localStorage.getItem("token"),
     "client-name": "Space Explorer [web]",
-    "client-version": "1.0.0"
-  }
+    "client-version": "1.0.0",
+  },
 });
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache: cache,
   link: link,
   resolvers,
-  typeDefs
+  typeDefs,
 });
 
 cache.writeData({
   data: {
     isLoggedIn: !!localStorage.getItem("token"),
-    cartItems: []
-  }
+    cartItems: [],
+  },
 });
 
 //  Render our app
@@ -59,18 +59,18 @@ function IsLoggedIn() {
 
 client
   .query({
-    query: gql`
+  query: gql`
       query GetLaunch {
-        launch(id: 56) {
-          id
-          mission {
-            name
+          launch(id: 56) {
+              id
+              mission {
+                  name
+              }
           }
-        }
       }
-    `
-  })
-  .then(result => console.log(result));
+  `,
+})
+.then((result) => console.log(result));
 
 injectStyles();
 
