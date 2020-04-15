@@ -42,13 +42,13 @@ interface ActionButtonProps extends Partial<LaunchDetailTypes.LaunchDetails_laun
 
 const ActionButton: React.FC<ActionButtonProps> = ({ isBooked, id, isInCart }) => {
   const [mutate, { loading, error }] = useMutation(isBooked ? CANCEL_TRIP : TOGGLE_CART, {
-    variables: { launchId: id },
+    variables: {launchId: id},
     refetchQueries: [
       {
         query: GET_LAUNCH_DETAILS,
-        variables: { launchId: id }
-      }
-    ]
+        variables: {launchId: id},
+      },
+    ],
   });
 
   if (loading) return <p>Loading...</p>;

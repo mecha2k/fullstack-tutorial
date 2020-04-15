@@ -27,14 +27,14 @@ const BookTrips: React.FC<BookTripsProps> = ({ cartItems }) => {
     BookTripsTypes.BookTrips,
     BookTripsTypes.BookTripsVariables
   >(BOOK_TRIPS, {
-    variables: { launchIds: cartItems },
-    refetchQueries: cartItems.map(launchId => ({
+    variables: {launchIds: cartItems},
+    refetchQueries: cartItems.map((launchId) => ({
       query: GET_LAUNCH,
-      variables: { launchId }
+      variables: {launchId},
     })),
     update(cache) {
-      cache.writeData({ data: { cartItems: [] } });
-    }
+      cache.writeData({data: {cartItems: []}});
+    },
   });
 
   return data && data.bookTrips && !data.bookTrips.success ? (

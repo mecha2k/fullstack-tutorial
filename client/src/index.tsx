@@ -58,7 +58,7 @@ function IsLoggedIn() {
 }
 
 client
-  .query({
+.query({
   query: gql`
       query GetLaunch {
           launch(id: 56) {

@@ -24,7 +24,7 @@ export default class LoginForm extends Component<LoginFormProps, LoginFormState>
 
   onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const email = (event.target as HTMLInputElement).value;
-    this.setState((s) => ({email}));
+    this.setState((s) => ({ email }));
   };
 
   onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
