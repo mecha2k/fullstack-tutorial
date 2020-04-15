@@ -37,6 +37,10 @@ export const GET_LAUNCHES = gql`
 
 interface LaunchesProps extends RouteComponentProps {}
 
+// export default class LoginForm extends Component<LoginFormProps, LoginFormState> {
+// class Launches extends React.Component<LaunchesProps>{
+//
+// }
 const Launches: React.FC<LaunchesProps> = () => {
   const { data, loading, error, fetchMore } = useQuery<
     GetLaunchListTypes.GetLaunchList,

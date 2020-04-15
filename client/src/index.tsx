@@ -15,22 +15,20 @@ import injectStyles from "./styles";
 // Set up our apollo-client to point at the server we created
 // this can be local or a remote endpoint
 const cache = new InMemoryCache();
-const link = new HttpLink({ uri: "http://localhost:4000/" });
+const link = new HttpLink({
+  uri: "http://localhost:4000/",
+  headers: {
+    authorization: localStorage.getItem("token"),
+    "client-name": "Space Explorer [web]",
+    "client-version": "1.0.0"
+  }
+});
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache: cache,
-  link: link
-
-  // link: new HttpLink({
-  //   uri: "http://localhost:4000/",
-  //   headers: {
-  //     authorization: localStorage.getItem("token"),
-  //     "client-name": "Space Explorer [web]",
-  //     "client-version": "1.0.0",
-  //   },
-  // }),
-  // resolvers,
-  // typeDefs,
+  link: link,
+  resolvers,
+  typeDefs
 });
 
 cache.writeData({
@@ -78,7 +76,7 @@ injectStyles();
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <Pages />
+    <IsLoggedIn />
   </ApolloProvider>,
   document.getElementById("root")
 );
