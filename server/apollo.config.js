@@ -1,3 +1,3 @@
 module.exports = {
-  service: { name: "apollo-space-explorer" },
+  service: { name: "apollo-space-explorer" }
 };

@@ -19,7 +19,7 @@ const link = new HttpLink({ uri: "http://localhost:4000/" });
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache: cache,
-  link: link,
+  link: link
 
   // link: new HttpLink({
   //   uri: "http://localhost:4000/",
@@ -36,8 +36,8 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
 cache.writeData({
   data: {
     isLoggedIn: !!localStorage.getItem("token"),
-    cartItems: [],
-  },
+    cartItems: []
+  }
 });
 
 //  Render our app
@@ -70,9 +70,9 @@ client
           }
         }
       }
-    `,
+    `
   })
-  .then((result) => console.log(result));
+  .then(result => console.log(result));
 
 injectStyles();
 

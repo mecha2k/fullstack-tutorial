@@ -14,12 +14,12 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   engine: {
-    apiKey: "service:apollo-space-explorer:mafPbISTWXtYtV1RO2HN3A",
+    apiKey: "service:apollo-space-explorer:mafPbISTWXtYtV1RO2HN3A"
   },
 
   dataSources: () => ({
     launchAPI: new LaunchAPI(),
-    userAPI: new UserAPI({ store }),
+    userAPI: new UserAPI({ store })
   }),
   context: async ({ req }) => {
     // simple auth check on every request
@@ -31,7 +31,7 @@ const server = new ApolloServer({
     const user = (users && users[0]) || null;
 
     return { user: { ...user.dataValues } };
-  },
+  }
 });
 
 server.listen({ port: 4000 }).then(({ url }) => {

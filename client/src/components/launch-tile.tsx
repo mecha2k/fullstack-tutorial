@@ -1,6 +1,9 @@
 import React from "react";
-import styled, { css } from "react-emotion";
-import { Link } from "@reach/router";
+// import styled, { css } from "react-emotion";
+// import { Link } from "@reach/router";
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
+import { Link } from "react-router-dom";
 
 import galaxy from "../assets/images/galaxy.jpg";
 import iss from "../assets/images/iss.jpg";
@@ -18,7 +21,7 @@ export default ({ launch }: any) => {
     <StyledLink
       to={`/launch/${id}`}
       style={{
-        backgroundImage: getBackgroundImage(id),
+        backgroundImage: getBackgroundImage(id)
       }}
     >
       <h3>{mission.name}</h3>
@@ -36,7 +39,7 @@ export const cardClassName = css({
   borderRadius: 7,
   color: "white",
   backgroundSize: "cover",
-  backgroundPosition: "center",
+  backgroundPosition: "center"
 });
 
 const padding = unit * 2;
@@ -46,6 +49,6 @@ const StyledLink = styled(Link)(cardClassName, {
   marginTop: padding,
   textDecoration: "none",
   ":not(:last-child)": {
-    marginBottom: padding * 2,
-  },
+    marginBottom: padding * 2
+  }
 });

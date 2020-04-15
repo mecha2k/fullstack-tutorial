@@ -14,7 +14,7 @@ const Container = styled("footer")({
   backgroundColor: "white",
   color: colors.textSecondary,
   position: "sticky",
-  bottom: 0,
+  bottom: 0
 });
 
 const InnerContainer = styled("div")({
@@ -22,7 +22,7 @@ const InnerContainer = styled("div")({
   alignItems: "center",
   maxWidth: 400,
   padding: unit * 2.5,
-  margin: "0 auto",
+  margin: "0 auto"
 });
 
 class Excersize extends React.Component {

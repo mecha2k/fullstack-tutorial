@@ -39,7 +39,7 @@ export const resolvers: AppResolvers = {
         return queryResult.cartItems.includes(launch.id);
       }
       return false;
-    },
+    }
   },
   Mutation: {
     addOrRemoveFromCart: (_, { id }: { id: string }, { cache }): string[] => {
@@ -47,14 +47,12 @@ export const resolvers: AppResolvers = {
       if (queryResult) {
         const { cartItems } = queryResult;
         const data = {
-          cartItems: cartItems.includes(id)
-            ? cartItems.filter((i) => i !== id)
-            : [...cartItems, id],
+          cartItems: cartItems.includes(id) ? cartItems.filter(i => i !== id) : [...cartItems, id]
         };
         cache.writeQuery({ query: GET_CART_ITEMS, data });
         return data.cartItems;
       }
       return [];
-    },
-  },
+    }
+  }
 };

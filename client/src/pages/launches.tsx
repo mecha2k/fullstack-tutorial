@@ -57,7 +57,7 @@ const Launches: React.FC<LaunchesProps> = () => {
           onClick={() =>
             fetchMore({
               variables: {
-                after: data.launches.cursor,
+                after: data.launches.cursor
               },
               updateQuery: (prev, { fetchMoreResult, ...rest }) => {
                 if (!fetchMoreResult) return prev;
@@ -65,10 +65,10 @@ const Launches: React.FC<LaunchesProps> = () => {
                   ...fetchMoreResult,
                   launches: {
                     ...fetchMoreResult.launches,
-                    launches: [...prev.launches.launches, ...fetchMoreResult.launches.launches],
-                  },
+                    launches: [...prev.launches.launches, ...fetchMoreResult.launches.launches]
+                  }
                 };
-              },
+              }
             })
           }
         >
