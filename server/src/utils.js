@@ -1,10 +1,10 @@
-const SQL = require("sequelize");
+const Sequelize = require("sequelize");
 
 function paginateResults({ after: cursor, pageSize = 20, results, getCursor = () => null }) {
   if (pageSize < 1) return [];
 
   if (!cursor) return results.slice(0, pageSize);
-  const cursorIndex = results.findIndex(item => {
+  const cursorIndex = results.findIndex((item) => {
     // if an item has a `cursor` on it, use that, otherwise try to generate one
     let itemCursor = item.cursor ? item.cursor : getCursor(item);
 
@@ -20,39 +20,40 @@ function paginateResults({ after: cursor, pageSize = 20, results, getCursor = ()
 }
 
 function createStore() {
-  const Op = SQL.Op;
-  const operatorsAliases = { $in: Op.in };
+  const Op = Sequelize.Op;
 
-  const db = new SQL("database", "username", "password", {
+  const sequelize = new Sequelize("database", "username", "password", {
     dialect: "sqlite",
-    storage: "./store.sqlite",
-    operatorsAliases,
-    logging: false
+    storage: "./db.sqlite",
+    logging: false,
+    operatorsAliases: false,
   });
 
-  const users = db.define("user", {
+  const users = sequelize.define("user", {
     id: {
-      type: SQL.INTEGER,
+      type: Sequelize.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
-    createdAt: SQL.DATE,
-    updatedAt: SQL.DATE,
-    email: SQL.STRING,
-    token: SQL.STRING
+    createdAt: Sequelize.DATE,
+    updatedAt: Sequelize.DATE,
+    email: Sequelize.STRING,
+    token: Sequelize.STRING,
   });
 
-  const trips = db.define("trip", {
+  const trips = sequelize.define("trip", {
     id: {
-      type: SQL.INTEGER,
+      type: Sequelize.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
-    createdAt: SQL.DATE,
-    updatedAt: SQL.DATE,
-    launchId: SQL.INTEGER,
-    userId: SQL.INTEGER
+    createdAt: Sequelize.DATE,
+    updatedAt: Sequelize.DATE,
+    launchId: Sequelize.INTEGER,
+    userId: Sequelize.INTEGER,
   });
+
+  sequelize.sync();
 
   return { users, trips };
 }
