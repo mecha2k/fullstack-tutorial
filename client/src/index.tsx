@@ -76,9 +76,8 @@ client
 injectStyles();
 
 ReactDOM.render(
-  // <ApolloProvider client={client}>
-  //   <IsLoggedIn />
-  // </ApolloProvider>,
-  <Excersize />,
+  <ApolloProvider client={client}>
+    <IsLoggedIn />
+  </ApolloProvider>,
   document.getElementById("root")
 );
