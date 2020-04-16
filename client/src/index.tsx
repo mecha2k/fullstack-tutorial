@@ -11,6 +11,7 @@ import Pages from "./pages";
 import Login from "./pages/login";
 import { resolvers, typeDefs } from "./resolvers";
 import injectStyles from "./styles";
+import Excersize from "./excersize";
 
 // Set up our apollo-client to point at the server we created
 // this can be local or a remote endpoint
@@ -75,8 +76,9 @@ client
 injectStyles();
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <IsLoggedIn />
-  </ApolloProvider>,
+  // <ApolloProvider client={client}>
+  //   <IsLoggedIn />
+  // </ApolloProvider>,
+  <Excersize />,
   document.getElementById("root")
 );
