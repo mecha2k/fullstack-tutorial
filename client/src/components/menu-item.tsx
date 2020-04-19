@@ -1,8 +1,8 @@
-import styled from "@emotion/styled";
-import { css } from "@emotion/core";
+import styled from "@emotion/styled"
+import { css } from "@emotion/core"
 // import { Link } from "@reach/router";
-import { Link } from "react-router-dom";
-import { colors, unit } from "../styles";
+import { Link } from "react-router-dom"
+import { colors, unit } from "../styles"
 
 export const menuItemClassName = css({
   flexGrow: 1,
@@ -20,10 +20,10 @@ export const menuItemClassName = css({
     fill: colors.secondary,
   },
   textDecoration: "none",
-});
+})
 
 const MenuItem = styled(Link)(menuItemClassName, {
   textDecoration: "none",
-});
+})
 
-export default MenuItem;
+export default MenuItem

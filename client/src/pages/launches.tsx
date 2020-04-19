@@ -3,8 +3,8 @@ import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
 import { LaunchTile, Header, Button, Loading } from "../components";
-import { RouteComponentProps } from "react-router";
-// import { RouteComponentProps } from "@reach/router";
+// import { RouteComponentProps } from "react-router";
+import { RouteComponentProps } from "@reach/router";
 import * as GetLaunchListTypes from "./__generated__/GetLaunchList";
 
 export const LAUNCH_TILE_DATA = gql`
